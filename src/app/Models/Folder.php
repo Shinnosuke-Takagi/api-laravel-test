@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Folder extends Model
+{
+    use HasFactory;
+
+    // relation
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function hasTasks()
+    {
+        return $this->hasMany(Task::class, 'folder_id');
+    }
+    // relation
+}

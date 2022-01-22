@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // relation
+    public function hasFolders()
+    {
+        return $this->hasMany(Folder::class, 'user_id');
+    }
+    // relation
 }
