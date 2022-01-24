@@ -19,9 +19,4 @@ class FolderController extends Controller
     {
         return new FolderResource($folder);
     }
-
-    public function foldersByUserId(User $author)
-    {
-        return new FolderCollection($author->hasFolders);
-    }
 }

@@ -19,9 +19,4 @@ class TaskController extends Controller
     {
         return new TaskResource($task);
     }
-
-    public function tasksByFolderId(Folder $belongsFolder)
-    {
-        return new TaskCollection($belongsFolder->hasTasks);
-    }
 }
