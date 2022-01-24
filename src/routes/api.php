@@ -21,9 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/folder/list', [FolderController::class, 'index']);
-Route::get('/folder/{folder}', [FolderController::class, 'show']);
-Route::get('/folder/author/{author}/list', [FolderController::class, 'foldersByUserId']);
+Route::get('/folder/detail/{folder}', [FolderController::class, 'show']);
+Route::get('/folder/list/author/{author}', [FolderController::class, 'foldersByUserId']);
 
 Route::get('/task/list', [TaskController::class, 'index']);
-Route::get('/task/{task}', [TaskController::class, 'show']);
-Route::get('/task/folder/{belongsFolder}/list', [TaskController::class, 'tasksByFolderId']);
+Route::get('/task/detail/{task}', [TaskController::class, 'show']);
+Route::get('/task/list/folder/{belongsFolder}', [TaskController::class, 'tasksByFolderId']);

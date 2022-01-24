@@ -22,6 +22,6 @@ class FolderController extends Controller
 
     public function foldersByUserId(User $author)
     {
-        return new FolderCollection($author->folders);
+        return new FolderCollection($author->hasFolders);
     }
 }
