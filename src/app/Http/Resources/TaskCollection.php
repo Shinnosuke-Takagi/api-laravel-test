@@ -14,12 +14,6 @@ class TaskCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'tasks_count' => $this->count(),
-            'data' => $this->collection,
-            'links' => [
-                'self' => $request->fullUrl(),
-            ],
-        ];
+        return $this->collection;
     }
 }

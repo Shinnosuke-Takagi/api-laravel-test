@@ -15,20 +15,12 @@ class TaskResource extends JsonResource
      */
     public function toArray($request)
     {
-        $created_at = new Carbon($this->created_at);
-        $updated_at = new Carbon($this->updated_at);
         return [
-            'data' => [
-                'type' => 'task',
-                'id' => $this->id,
-                'content' => $this->content,
-                'created_at' => $created_at->format('Y/m/d H:i'),
-                'updated_at' => $updated_at->format('Y/m/d H:i'),
-                'belongsFolder' => $this->belongsFolder->title,
-            ],
-            'links' => [
-                'self' => url('/task/' . $this->id),
-            ],
+            'id' => $this->id,
+            'folder' => $this->belongsFolder->title,
+            'content' => $this->content,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

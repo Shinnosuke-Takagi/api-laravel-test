@@ -14,12 +14,6 @@ class FolderCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'folders_count' => $this->count(),
-            'data' => $this->collection,
-            'links' => [
-                'self' => $request->fullUrl(),
-            ]
-        ];
+        return $this->collection;
     }
 }

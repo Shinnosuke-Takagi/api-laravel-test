@@ -15,20 +15,12 @@ class FolderResource extends JsonResource
      */
     public function toArray($request)
     {
-        $created_at = new Carbon($this->created_at);
-        $updated_at = new Carbon($this->updated_at);
         return [
-            'data' => [
-                'type' => 'folder',
-                'id' => $this->id,
-                'title'    => $this->title,
-                'created_at' => $created_at->format('Y/m/d H:i'),
-                'updated_at' => $updated_at->format('Y/m/d H:i'),
-                'author' => $this->author->name,
-            ],
-            'links' => [
-                'self' => url('/folder/' . $this->id),
-            ]
+            'id' => $this->id,
+            'author' => $this->author,
+            'title'    => $this->title,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
