@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TaskResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,14 +16,9 @@ class TaskResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'folder' => $this->when(
-                $this->relationLoaded('belongsFolder') &&
-                    $this->belongsFolder->relationLoaded('author'),
-                function () {
-                    return new FolderResource($this->belongsFolder->load('author'));
-                }
-            ),
-            'content' => $this->content,
+            'name' => $this->name,
+            'email' => $this->email,
+            'emailVerifiedAt' => $this->email_verified_at,
             'createdAt' => $this->created_at,
             'updatedAt' => $this->updated_at,
         ];

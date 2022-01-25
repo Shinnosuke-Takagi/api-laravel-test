@@ -12,11 +12,11 @@ class FolderController extends Controller
 {
     public function index()
     {
-        return FolderResource::collection(Folder::all());
+        return FolderResource::collection(Folder::with(['author', 'hasTasks'])->get());
     }
 
     public function show(Folder $folder)
     {
-        return new FolderResource($folder);
+        return new FolderResource($folder->load(['author', 'hasTasks']));
     }
 }

@@ -17,10 +17,11 @@ class FolderResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'author' => $this->author,
+            'author' => new UserResource($this->whenLoaded('author')),
             'title'    => $this->title,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'createdAt' => $this->created_at,
+            'updatedAt' => $this->updated_at,
+            'tasks' => TaskResource::collection($this->whenLoaded('hasTasks')),
         ];
     }
 }
