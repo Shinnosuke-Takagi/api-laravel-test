@@ -19,4 +19,17 @@ class FolderController extends Controller
     {
         return new FolderResource($folder->load(['author', 'hasTasks']));
     }
+
+    public function createFolder(Request $request, Folder $folder)
+    {
+        $folder->fill($request->all())->save();
+        return new FolderResource($folder->load(['author', 'hasTasks']));
+    }
+
+    public function updateFolder(Request $request)
+    {
+        $folder = Folder::find($request->id);
+        $folder->fill($request->all())->save();
+        return new FolderResource($folder->load(['author', 'hasTasks']));
+    }
 }

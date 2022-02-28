@@ -19,4 +19,18 @@ class TaskController extends Controller
     {
         return new TaskResource($task->load(['belongsFolder.author']));
     }
+
+    public function createTask(Request $request, Task $task)
+    {
+        $folder = Folder::find($request->folder['id']);
+        $folder->hasTasks()->save($task->fill($request->all()));
+        return new TaskResource($task->load(['belongsFolder.author']));
+    }
+
+    public function updateTask(Request $request)
+    {
+        $task = Task::find($request->id);
+        $task->fill($request->all())->save();
+        return new TaskResource($task->load(['belongsFolder.author']));
+    }
 }

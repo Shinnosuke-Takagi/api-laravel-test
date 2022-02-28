@@ -24,6 +24,10 @@ Route::post('/auth/logout', [AuthController::class, 'logout']);
 
 Route::get('/folder/list', [FolderController::class, 'index']);
 Route::get('/folder/detail/{folder}', [FolderController::class, 'show']);
+Route::middleware('auth:sanctum')->post('/create-folder', [FolderController::class, 'createFolder']);
+Route::middleware('auth:sanctum')->patch('/update-folder', [FolderController::class, 'updateFolder']);
 
 Route::get('/task/list', [TaskController::class, 'index']);
 Route::get('/task/detail/{task}', [TaskController::class, 'show']);
+Route::middleware('auth:sanctum')->post('/create-task', [TaskController::class, 'createTask']);
+Route::middleware('auth:sanctum')->patch('/update-task', [TaskController::class, 'updateTask']);

@@ -9,6 +9,10 @@ class Folder extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+    ];
+
     // relation
     public function author()
     {
